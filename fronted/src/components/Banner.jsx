@@ -8,7 +8,7 @@ const Banner = () => {
 
     return (
         <motion.div 
-            className='flex bg-gray-500 rounded-lg px-6 sm:px-10 md:px-14 lg:px-12 my-16 md:mx-10 min-h-[320px]'
+            className='flex bg-gray-500 rounded-lg px-6 sm:px-10 md:px-14 lg:px-12 my-5 md:mx-10 min-h-[320px]'
             initial={{ opacity: 0, y: -30 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8 }}

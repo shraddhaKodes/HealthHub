@@ -10,8 +10,8 @@ const Navbar = () => {
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400">
       {/* Logo */}
       <div className="flex items-center">
-        <img src={assets.logo} alt="Logo" className="w-12 h-12" />
-        <span class="text-xl font-bold text-blue-900">HealthHub</span>
+        <img src={assets.logo} alt="Logo" onClick={()=>{navigate('/')}} className="w-12 h-12" />
+        <span className="text-xl font-bold text-blue-900">HealthHub</span>
       </div>
 
       {/* Navigation Links */}
@@ -38,17 +38,35 @@ const Navbar = () => {
       {/* Create Account Button */}
       <div className="flex items-center gap-4">
         {token ? (
-           <div className='flex items-center gap-2 cursor-pointer group relative'>
-           <img className='w-8 rounded-full' src={assets.profile_pic} alt="" />
-           <img className='w-2.5' src={assets.dropdown_icon} alt="" />
-           <div className='absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block'>
-             <div className='min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4'>
-               <p onClick={() => navigate('/my-profile')} className='hover:text-black cursor-pointer'>My Profile</p>
-               <p onClick={() => navigate('/my-appointments')} className='hover:text-black cursor-pointer'>My Appointments</p>
-               <p onClick={() => { setToken(false); navigate('/') }} className='hover:text-black cursor-pointer'>Logout</p>
-             </div>
-           </div>
-         </div>
+          <div className="flex items-center gap-2 cursor-pointer group relative">
+            <img className="w-8 rounded-full" src={assets.profile_pic} alt="" />
+            <img className="w-2.5" src={assets.dropdown_icon} alt="" />
+            <div className="absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block">
+              <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
+                <p
+                  onClick={() => navigate("/my-profile")}
+                  className="hover:text-black cursor-pointer"
+                >
+                  My Profile
+                </p>
+                <p
+                  onClick={() => navigate("/my-appointments")}
+                  className="hover:text-black cursor-pointer"
+                >
+                  My Appointments
+                </p>
+                <p
+                  onClick={() => {
+                    setToken(false);
+                    navigate("/");
+                  }}
+                  className="hover:text-black cursor-pointer"
+                >
+                  Logout
+                </p>
+              </div>
+            </div>
+          </div>
         ) : (
           <button
             onClick={() => navigate("/login")}

@@ -1,12 +1,22 @@
-import { createContext, useMemo } from "react";
-import { doctors } from "../assets/assets";
+import { createContext, useState, useEffect, useMemo } from "react";
+import { doctors as staticDoctors } from "../assets/assets"; // Import static data
 
 export const AppContext = createContext();
 
 const AppContextProvider = ({ children }) => {
-    const currencySymbol = '$';
+    const [doctors, setDoctors] = useState(staticDoctors);
+    const currencySymbol = "$";
 
-    // Memoizing the context value to prevent unnecessary re-renders
+    // Fetch doctors dynamically (for future API)
+    useEffect(() => {
+        // Uncomment this if API becomes available
+        // fetch("API_URL_HERE")
+        //     .then(res => res.json())
+        //     .then(data => setDoctors(data))
+        //     .catch(err => console.error("Failed to fetch doctors", err));
+    }, []);
+
+    // Memoizing context value
     const value = useMemo(() => ({ doctors, currencySymbol }), [doctors, currencySymbol]);
 
     return (
